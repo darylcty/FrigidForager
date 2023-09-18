@@ -1,5 +1,5 @@
 
-.NavBar {
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -8,36 +8,34 @@
     display: flex;
 }
 
-.NavBarItems {
+.navbar-items {
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style-type: none;
-    font-size: 20px
+    font-size: 20px;
+    color: white;
   }
   
-  
-  .NavBar-Fridge {
-    float: left;
-  }
-  
-  .NavBar-Fridge a {
+
+  .navbar-links a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
     height: auto;
+    font-size: 30px;
+    font-weight: 700;
   }
   
-  .NavBar-Fridge a:hover {
+  .navbar-links a:hover {
     background-color: #111;
   }
   
   .FFLogo {
-    float: left;
-    width: 250px;
+    padding: 0 0 0 -1000px;
+    width: 500px;
     height: auto;
-    margin: 0 10px 0 0;
   }
   
