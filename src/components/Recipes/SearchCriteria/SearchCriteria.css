@@ -1,8 +1,8 @@
-.form-container {
+.search-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     height: 100vh;
     font-size: 25px;
     width: 100%;
@@ -11,7 +11,12 @@
     padding: auto;
 }
 
-.fridge-form .expiry-calendar {
-    display: flex;
-    align-items: center;
+.search-form {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.ingredient-input {
+    margin-bottom: 1rem;
 }
