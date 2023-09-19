@@ -12,12 +12,23 @@ export default function SearchCriteria() {
     const [fifthIngredient, setFifthIngredient] = useState("");
 
 //? To handle searching of ingredients provided
-const handleSearch = async (event) => {
-    event.preventDefault();
-    //! TODO: ADD API CALL HERE
-}
+    // const ingredients = [ firstIngredient, secondIngredient, thirdIngredient. fourthIngredient, fifthIngredient];
+    const handleSearch = async () => {
+        const url = 
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${firstIngredient},+${secondIngredient},+${thirdIngredient}&number=10`;
+       
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "a5476988f20d461e986c86efde787dfb"
+          },
+        });
+        await response.json();
+        // updateRecipe(recipe.id);
+      };
 
-//? Create form to collect user's ingredient on hand
+      //? Create form to collect user's ingredient on hand
     return (
         <div className="search-container">
             <form className="search-form">
@@ -66,7 +77,7 @@ const handleSearch = async (event) => {
                     onChange={(event) => setFifthIngredient(event.target.value)} />
                 </label>
                 <br/>
-                <button className="forage-button" Click={handleSearch}>Forage!</button>
+                <button className="forage-button" onClick={handleSearch}>Forage!</button>
             </form>
         </div>
     );
