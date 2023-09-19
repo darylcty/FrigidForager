@@ -25,6 +25,7 @@ const handleSearch = async (event) => {
                     First Ingredient
                     <br/>
                 <input type="text" 
+                    className="input-field"
                     value={firstIngredient} 
                     onChange={(event) => setFirstIngredient(event.target.value)} />
                 </label>
@@ -33,6 +34,7 @@ const handleSearch = async (event) => {
                     Second Ingredient
                     <br/>
                 <input type="text" 
+                    className="input-field"
                     value={secondIngredient} 
                     onChange={(event) => setSecondIngredient(event.target.value)} />
                 </label>
@@ -41,6 +43,7 @@ const handleSearch = async (event) => {
                     Third Ingredient
                     <br/>
                 <input type="text"
+                    className="input-field"
                     value={thirdIngredient} 
                     onChange={(event) => setThirdIngredient(event.target.value)} />
                 </label>
@@ -49,6 +52,7 @@ const handleSearch = async (event) => {
                     Fourth Ingredient
                     <br/>
                 <input type="text" 
+                    className="input-field"
                     value={fourthIngredient} 
                     onChange={(event) => setFourthIngredient(event.target.value)} />
                 </label>
@@ -57,11 +61,12 @@ const handleSearch = async (event) => {
                     Fifth Ingredient
                     <br/>
                 <input type="text" 
+                    className="input-field"
                     value={fifthIngredient} 
                     onChange={(event) => setFifthIngredient(event.target.value)} />
                 </label>
                 <br/>
-                <button onClick={handleSearch}>Forage!</button>
+                <button className="forage-button" Click={handleSearch}>Forage!</button>
             </form>
         </div>
     );

@@ -19,7 +19,7 @@
   
 
   .navbar-links a {
-    display: block;
+    display: flex;
     color: white;
     text-align: center;
     padding: 14px 20px;
@@ -34,8 +34,7 @@
   }
   
   .FFLogo {
-    padding: 0 0 0 -1000px;
-    width: 500px;
+    width: 250px;
     height: auto;
   }
   

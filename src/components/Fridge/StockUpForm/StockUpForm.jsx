@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./InputForm.css";
+import "./StockUpForm.css";
 
 //? Init Component
-export default function InputForm() {
+export default function StockUpForm() {
     const [category, setCategory] = useState("");
     const [product, setProduct] = useState("");
     const [quantity, setQuantity] = useState("0");
@@ -34,7 +34,7 @@ const addDaysToExpiry = (daysToAdd) => {
 
     return (
         <div className="form-container">
-            <form className="fridge-form">
+            <form className="stock-up-form">
                 <label className="category">
                     Category
                     <br/>
@@ -128,7 +128,7 @@ const addDaysToExpiry = (daysToAdd) => {
                     onChange={(event) => setExpiryDate(event.target.value)} />
                 </label>
                 <br/>
-                <button onClick={handleAdd}>Fridge It!</button>
+                <button className="fridge-it-button" onClick={handleAdd}>Fridge It!</button>
             </form>
         </div>
     );
