@@ -1,19 +1,10 @@
-.form-container {
+.stock-up-form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
     font-size: 25px;
-    width: 100%;
-    justify-content: space-evenly;
-    margin: auto;
-    padding: auto;
-}
-
-.stock-form .expiry-calendar {
-    display: flex;
-    align-items: center;
 }
 
 .fridge-it-button {

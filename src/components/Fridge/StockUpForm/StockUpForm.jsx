@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./StockUpForm.css";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 //? Init Component
 export default function StockUpForm() {
@@ -13,9 +16,9 @@ export default function StockUpForm() {
 //? To handle submission of form
     const handleAdd = async (event) => {
         event.preventDefault();
-        const newIngredient = makeIngredient(product);
-        addIngredient(newIngredient);
-        setIngredient("");
+        // const newIngredient = makeIngredient(product);
+        // addIngredient(newIngredient);
+        // setIngredient("");
     }
     
 //? [UX] To add days to purchase date corresponding to button clicked (3/7/10days)
@@ -103,9 +106,10 @@ const addDaysToExpiry = (daysToAdd) => {
                     onChange={(event) => setPurchaseDate(event.target.value)} />
                 </label>
                 <br/>
+                <p>USE A DATE LIBRARY TO HANDLE DATES</p>
                 <label>
                     Expiry Date
-                    <div className="add-expiry-buttons">
+                    {/* <div className="add-expiry-buttons">
                         <button
                         className="3-days-button" 
                         type="button"
@@ -121,7 +125,8 @@ const addDaysToExpiry = (daysToAdd) => {
                         type="button"
                         onClick={() => addDaysToExpiry(10)}>+10 Days
                         </button>
-                    </div>
+                    </div> */}
+                    <br/>
                 <input type="date"
                     className="expiry-calendar" 
                     value={expiryDate} 
