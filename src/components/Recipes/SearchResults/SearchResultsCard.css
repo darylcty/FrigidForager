@@ -1,0 +1,26 @@
+.search-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 500px;
+  }
+  
+  .recipe-card {
+    flex: 1 0 calc(33.333% - 16px);
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+
+  }
+
+  .recipe-image {
+    height: auto;
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .recipe-title {
+    width: 100%;
+  }
+
+  

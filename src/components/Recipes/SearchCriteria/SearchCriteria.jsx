@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./SearchCriteria.css";
+import SearchResultsCard from "../SearchResults/SearchResultsCard";
 
 
 export default function SearchCriteria() {
@@ -10,28 +11,44 @@ export default function SearchCriteria() {
     const [thirdIngredient, setThirdIngredient] = useState("");
     const [fourthIngredient, setFourthIngredient] = useState("");
     const [fifthIngredient, setFifthIngredient] = useState("");
+    
+//? Init setRecipe state
+    const [recipes, setRecipes] = useState([]);
 
 //? To handle searching of ingredients provided
-    // const ingredients = [ firstIngredient, secondIngredient, thirdIngredient. fourthIngredient, fifthIngredient];
-    const handleSearch = async () => {
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
+        try {
         const url = 
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${firstIngredient},+${secondIngredient},+${thirdIngredient}&number=10`;
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${firstIngredient},+${secondIngredient},+${thirdIngredient},+${fourthIngredient},+${fifthIngredient}&number=9`;
        
         const response = await fetch(url, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "x-api-key": "a5476988f20d461e986c86efde787dfb"
+            "x-api-key": "37288580d1374726b9bee81a8cfca5c2"
           },
         });
-        await response.json();
-        // updateRecipe(recipe.id);
-      };
+
+        if (!response.ok) {
+            throw new Error(`An error occurred: ${response.statusText}`);
+          }
+    
+          const data = await response.json();
+          console.log("Fetched data:", data);
+          setRecipes(data);
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+            }
+
+    };
+
 
       //? Create form to collect user's ingredient on hand
     return (
         <div className="search-container">
-            <form className="search-form">
+            <form className="search-form" onSubmit={handleSearch}>
                 <label className="search-ingredient">
                     First Ingredient
                     <br/>
@@ -77,8 +94,9 @@ export default function SearchCriteria() {
                     onChange={(event) => setFifthIngredient(event.target.value)} />
                 </label>
                 <br/>
-                <button className="forage-button" onClick={handleSearch}>Forage!</button>
+                <button className="forage-button" type="submit">Forage!</button>
             </form>
+            <SearchResultsCard recipes={recipes} />
         </div>
     );
 }
