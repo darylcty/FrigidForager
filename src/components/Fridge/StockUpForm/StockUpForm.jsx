@@ -60,7 +60,7 @@ const addDaysToExpiry = (daysToAdd) => {
                 <label className="product-name">
                     Product
                     <br/>
-                <input type="text" 
+                <input type="text" className="input-field" 
                     value={product} 
                     onChange={(event) => setProduct(event.target.value)} />
                 </label>
@@ -68,7 +68,7 @@ const addDaysToExpiry = (daysToAdd) => {
                 <label className="quantity">
                     Quantity
                     <br/>
-                <input type="number" 
+                <input type="number" className="input-field" 
                     value={quantity} 
                     onChange={(event) => setQuantity(event.target.value)} />
                     <select
