@@ -1,46 +1,37 @@
 import { useState } from "react";
 import "./SearchResultsCard.css";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchResultsCard ({recipes}) {
+export default function SearchResultsCard ({ results }) {
    
-    //? Init selectedRecipe
+    const [selectedRecipe, setSelectedRecipe] = useState({});
+    const [id, setID] = useState("");
+    const navigate = useNavigate();
 
-    const [selectedRecipe, setSelectedRecipe] = useState("");
-
-    const handleClick = async (id) => {
-        try {
-            const url = 
-            `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false`;
-
-            const response = await fetch(url, {
+    const handleClick = async (clickedId) => {
+        setID(clickedId);
+        const url = `https://api.spoonacular.com/recipes/${clickedId}/information?includeNutrition=false`;
+        const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "x-api-key": "37288580d1374726b9bee81a8cfca5c2"
             },
-            });
+        });
+        const data = await response.json();
+        console.log("Fetched data:", data);
+        navigate(`/recipe-info/${clickedId}`);
 
-            if (!response.ok) {
-                throw new Error(`An error occurred: ${response.statusText}`);
-            }
+    };
         
-            const data = await response.json();
-            console.log("Fetched data:", data);
-            setSelectedRecipe(data);
-            } catch (error) {
-            console.error("There was a problem with the fetch operation:", error);
-                }
-        };
-
     return (
         <div className="search-results-container">
-            {recipes.map((recipe, index) => (
-            <div key={index} className="recipe-card" onClick={recipe.id}>
-                <img src={recipe.image} alt={recipe.title} className="recipe-image"/>
-                <h2 className="recipe-title">{recipe.title}</h2>
+            {results.map((result, id) => (
+            <div key={id} className="results-card" onClick={() => handleClick(result.id)}>
+                <img src={result.image} className="results-image"/>
+                <h2 className="results-title">{result.title}</h2>
             </div>
             ))}
         </div>
-            );
-
+    );
 }

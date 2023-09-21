@@ -3,24 +3,26 @@
     flex-wrap: wrap;
     margin-top: 500px;
   }
-  
-  .recipe-card {
+  .results-card {
     flex: 1 0 calc(33.333% - 16px);
     margin: 5px;
     align-items: center;
     justify-content: center;
     width: 300px;
-
+    transition: background-color 0.3s ease;
   }
 
-  .recipe-image {
+  .results-card:hover {
+    background-color: rgb(19, 19, 19); /* Or any other color */
+    width: 100%;
+  }
+
+  .results-image {
     height: auto;
     width: 100%;
     margin-top: 25px;
   }
 
-  .recipe-title {
-    width: 100%;
+  .results-title {
+    width: 300px;
   }
-
-  
