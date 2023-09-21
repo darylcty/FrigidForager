@@ -1,8 +1,5 @@
 import { useState } from "react";
 import "./StockUpForm.css";
-import DatePicker from "react-datepicker";
-
-import "react-datepicker/dist/react-datepicker.css";
 
 //? Init Component
 export default function StockUpForm() {
@@ -14,12 +11,43 @@ export default function StockUpForm() {
     const [expiryDate, setExpiryDate] = useState("");
 
 //? To handle submission of form
-    const handleAdd = async (event) => {
-        event.preventDefault();
-        // const newIngredient = makeIngredient(product);
-        // addIngredient(newIngredient);
-        // setIngredient("");
+const handleAdd = async (event) => {
+    event.preventDefault();
+    const url = "https://api.airtable.com/v0/app02KAwukMua69NJ/Table%201";
+    const data = {
+        "fields": {
+            "Category": category,
+            "Product": product,
+            "Quantity": quantity,
+            "UOM": uom,
+            "PurchaseDate": purchaseDate,
+            "ExpiryDate": expiryDate
+        }
+    };
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer patnsCZM9g1WFDQ39.e0a7417561aa4437ef64b85a6b406a3e479dda69c4c1341c99b9ca279dd2f065",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = await fetch(url, options);
+    if (response.ok) {
+        // Do something if the request is successful, e.g., reset the form
+        console.log("Item added successfully");
+        setCategory("");
+        setProduct("");
+        setQuantity("0");
+        setUom("");
+        setPurchaseDate("");
+        setExpiryDate("");
+    } else {
+        console.log("Failed to add item", await response.json());
     }
+};
     
 //? [UX] To add days to purchase date corresponding to button clicked (3/7/10days)
 const addDaysToExpiry = (daysToAdd) => {
@@ -37,7 +65,7 @@ const addDaysToExpiry = (daysToAdd) => {
 
     return (
         <div className="form-container">
-            <form className="stock-up-form">
+            <form className="stock-up-form" onSubmit={handleAdd}>
                 <label className="category">
                     Category
                     <br/>
@@ -106,7 +134,6 @@ const addDaysToExpiry = (daysToAdd) => {
                     onChange={(event) => setPurchaseDate(event.target.value)} />
                 </label>
                 <br/>
-                <p>USE A DATE LIBRARY TO HANDLE DATES</p>
                 <label>
                     Expiry Date
                     {/* <div className="add-expiry-buttons">
@@ -133,7 +160,7 @@ const addDaysToExpiry = (daysToAdd) => {
                     onChange={(event) => setExpiryDate(event.target.value)} />
                 </label>
                 <br/>
-                <button className="fridge-it-button" onClick={handleAdd}>Fridge It!</button>
+                <button className="fridge-it-button" type="submit">Fridge It!</button>
             </form>
         </div>
     );
