@@ -25,7 +25,7 @@ const handleAdd = async (event) => {
         }
     };
 
-    const options = {
+    const create = {
         method: "POST",
         headers: {
             "Authorization": "Bearer patnsCZM9g1WFDQ39.e0a7417561aa4437ef64b85a6b406a3e479dda69c4c1341c99b9ca279dd2f065",
@@ -34,9 +34,8 @@ const handleAdd = async (event) => {
         body: JSON.stringify(data)
     };
 
-    const response = await fetch(url, options);
+    const response = await fetch(url, create);
     if (response.ok) {
-        // Do something if the request is successful, e.g., reset the form
         console.log("Item added successfully");
         setCategory("");
         setProduct("");
@@ -49,13 +48,6 @@ const handleAdd = async (event) => {
     }
 };
     
-//? [UX] To add days to purchase date corresponding to button clicked (3/7/10days)
-const addDaysToExpiry = (daysToAdd) => {
-    const date = new Date();
-    date.setDate(date.getDate() + daysToAdd);
-    setExpiryDate(date.toISOString().substring(0, 10));
-  }
-
 //? Create form to collect user's input
 //? Category - Drop down selector
 //? Quantity - Number only
@@ -136,23 +128,6 @@ const addDaysToExpiry = (daysToAdd) => {
                 <br/>
                 <label>
                     Expiry Date
-                    {/* <div className="add-expiry-buttons">
-                        <button
-                        className="3-days-button" 
-                        type="button"
-                        onClick={() => addDaysToExpiry(3)}>+3 Days
-                        </button>
-                        <button 
-                        className="7-days-button" 
-                        type="button"
-                        onClick={() => addDaysToExpiry(7)}>+7 Days
-                        </button>
-                        <button 
-                        className="10-days-button" 
-                        type="button"
-                        onClick={() => addDaysToExpiry(10)}>+10 Days
-                        </button>
-                    </div> */}
                     <br/>
                 <input type="date"
                     className="expiry-calendar" 

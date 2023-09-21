@@ -28,8 +28,6 @@ export default function RecipeCard({ selectedRecipe }) {
       <img src={recipeDetails.image} alt={recipeDetails.title} />
       <p>Ready in: {recipeDetails.readyInMinutes} minutes</p>
       <p>Serves: {recipeDetails.servings}</p>
-
-      {/* ... more fields ... */}
       <h3>Ingredients:</h3>
       <ul>
         {recipeDetails.extendedIngredients?.map((ingredient, index) => (

@@ -33,7 +33,8 @@ export default function SearchCriteria() {
           const data = await response.json();
           console.log("Fetched data:", data);
           setResults(data);
-        } 
+
+          }
 
       //? Create form to collect user's ingredient on hand
     return (
