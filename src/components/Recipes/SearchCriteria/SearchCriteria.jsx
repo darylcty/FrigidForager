@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./SearchCriteria.css";
 import SearchResultsCard from "../SearchResults/SearchResultsCard";
 
@@ -13,13 +14,12 @@ export default function SearchCriteria() {
     const [fifthIngredient, setFifthIngredient] = useState("");
     
 //? Init setRecipe state
-    const [recipes, setRecipes] = useState([]);
+    const [results, setResults] = useState([]);
 
 //? To handle searching of ingredients provided
 
     const handleSearch = async (event) => {
         event.preventDefault();
-        try {
         const url = 
         `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${firstIngredient},+${secondIngredient},+${thirdIngredient},+${fourthIngredient},+${fifthIngredient}&number=9`;
        
@@ -29,25 +29,16 @@ export default function SearchCriteria() {
             "Content-Type": "application/json",
             "x-api-key": "37288580d1374726b9bee81a8cfca5c2"
           },
-        });
-
-        if (!response.ok) {
-            throw new Error(`An error occurred: ${response.statusText}`);
-          }
-    
+        });    
           const data = await response.json();
           console.log("Fetched data:", data);
-          setRecipes(data);
-        } catch (error) {
-          console.error("There was a problem with the fetch operation:", error);
-            }
-
-    };
-
+          setResults(data);
+        } 
 
       //? Create form to collect user's ingredient on hand
     return (
         <div className="search-container">
+            <p>Enter at least 1 ingredient and up to 5 ingredients!</p>
             <form className="search-form" onSubmit={handleSearch}>
                 <label className="search-ingredient">
                     First Ingredient
@@ -94,9 +85,11 @@ export default function SearchCriteria() {
                     onChange={(event) => setFifthIngredient(event.target.value)} />
                 </label>
                 <br/>
-                <button className="forage-button" type="submit">Forage!</button>
+                {/* <Link to={`/search-results/`}> */}
+                    <button className="forage-button" type="submit">Forage!</button>
+                {/* </Link> */}
             </form>
-            <SearchResultsCard recipes={recipes} />
+            <SearchResultsCard results={results} />
         </div>
     );
 }
