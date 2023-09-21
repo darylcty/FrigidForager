@@ -7,28 +7,38 @@ export default function Inventory() {
     const BASE_URL = "https://api.airtable.com/v0/app02KAwukMua69NJ/Table%201";
     const [fridge, setFridge] = useState([]);
 
+    //? fetchFridge is outside the useEffect hook so it can be used in the handleDelete function.
+    const fetchFridge = async () => {
+      const response = await fetch(BASE_URL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      });
+      const jsonData = await response.json();
+      const fridgeData = jsonData.records.map((data) => ({
+        ...data.fields,
+        id: data.id,
+      }));
+
+      setFridge(fridgeData);
+    };
+    
     useEffect(() => {
-        console.log("fetching data...");
-          const fetchFridge = async () => {
-            const response = await fetch(BASE_URL, {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${TOKEN}`,
-              },
-            });
-            const jsonData = await response.json();
-            console.log("json data: ");
-            const fridgeData = jsonData.records.map((data) => ({
-              ...data.fields,
-              id: data.id,
-            }));
-            console.log("fridge data: ");
-            setFridge(fridgeData);
-            // setRefresh(!refresh);
-          };
           fetchFridge();
         }, []);
-
+    
+    const handleDelete = async (id) => {
+      const url = `https://api.airtable.com/v0/app02KAwukMua69NJ/Table%201/${id}`;
+      await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      });
+      fetchFridge();
+    }
         return (
             <div className="fridge-contents-table">
               <table>
@@ -54,7 +64,7 @@ export default function Inventory() {
                       <td>{item.PurchaseDate}</td>
                       <td>{item.ExpiryDate}</td>
                       <td>Edit</td>
-                      <td>Delete</td>
+                      <td><button onClick={() => handleDelete(item.id)}>Delete</button></td>
                     </tr>
                   ))}
                 </tbody>
