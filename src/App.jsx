@@ -4,6 +4,7 @@ import StockUpForm from './components/Fridge/StockUpForm/StockUpForm';
 import SearchCriteria from './components/Recipes/SearchCriteria/SearchCriteria'
 import SearchResultsCard from './components/Recipes/SearchResults/SearchResultsCard';
 import RecipeCard from './components/Recipes/RecipeCard/RecipeCard';
+import Inventory from './components/Fridge/Inventory/Inventory';
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
@@ -15,9 +16,8 @@ export default function App() {
       <Routes>
         <Route path="/search-recipes" element={<SearchCriteria />} />
         <Route path="/stock-up-form" element={<StockUpForm />} />
-        {/* <Route path="/search-results/" element={<SearchResultsCard results={results} handleClick={handleClick} />} /> */}
         <Route path="/recipe-info/:id" element={<RecipeCard />} />
-        {/* <Route path="/inventory" element={<Inventory />} /> */}
+        <Route path="/inventory" element={<Inventory />} />
       </Routes>       
     </>
   )

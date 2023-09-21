@@ -1,0 +1,28 @@
+.fridge-contents-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 25px;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: auto;
+    margin-top: 50px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid grey;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: rgb(112, 196, 229);
+  }
