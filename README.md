@@ -40,7 +40,7 @@ Built with:
 * Insomnia REST
 
 Deployed on:
-- Vercel, link <a href="https://frigid-forager.vercel.app/">here</a>.
+* Vercel - <a href="https://frigid-forager.vercel.app/">FrigidForager</a>.
 
 ## Screenshots
 
