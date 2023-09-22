@@ -42,11 +42,12 @@ Built with:
 - Airtable
 - Spoonacular API
 - Trello
+- Insomnia REST
 
 Deployed on:
 - Vercel, link <a href="https://frigid-forager.vercel.app/">here</a>.
 
-## Demo
+## Screenshots
 
 Screenshots and wireframes to be added soon.
 
@@ -58,16 +59,11 @@ As of now, the project is hosted on Vercel and there is no setup guide for local
 
 The project is in its early stages, and there are several bugs and issues related to UI/UX that are currently being resolved.
 
-## Contributing
-
-At this time, Frigid Forager is not open for contributions as it is a personal project aimed at building my portfolio.
-
 ## Future Work
 
 - Introduce a dynamic dashboard that provides an overview of the items in the fridge.
 - Implement user authentication for personalized experiences.
 - Optimize the algorithm for recipe suggestions.
+- Allow saving of recipes for later reference, add "likes" to individual recipes.
+- Search recipes based on ratings, popularity, new etc.
 
----
-
-Feel free to make any modifications you see fit. I hope this helps you get started on your README!
