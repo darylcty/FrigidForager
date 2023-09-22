@@ -1,7 +1,3 @@
-Great, thanks for providing all that information. Here's a draft README.md file for your project:
-
----
-
 # Frigid Forager - Recipe Search and Inventory Tracker
 
 ## Overview
@@ -45,6 +41,7 @@ Built with:
 - React
 - Airtable
 - Spoonacular API
+- Trello
 
 Deployed on:
 - Vercel
