@@ -49,8 +49,11 @@ Screenshots and wireframes to be added soon.
 ## Getting Started
 
 * Trello
-* Canva
-  
+
+* Canva - Wireframe Planning
+
+![wireframe-for-fridgeforager-recipe](https://github.com/darylcty/FrigidForager/assets/124702698/14cae9b0-be42-4a5c-80ff-aa14be722521)
+
 ## Known Issues
 
 The project is in its early stages, and there are several bugs and issues related to UI/UX that are currently being resolved.
