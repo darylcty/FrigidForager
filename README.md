@@ -44,7 +44,7 @@ Built with:
 - Trello
 
 Deployed on:
-- Vercel
+- Vercel, link <a href="https://frigid-forager.vercel.app/">here</a>.
 
 ## Demo
 
