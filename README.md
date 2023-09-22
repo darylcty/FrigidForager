@@ -10,10 +10,8 @@ Frigid Forager is designed to help users maximize the use of their ingredients a
 - [Audience](#audience)
 - [Features](#features)
 - [Technologies](#technologies)
-- [Demo](#demo)
 - [Getting Started](#getting-started)
 - [Known Issues](#known-issues)
-- [Contributing](#contributing)
 - [Future Work](#future-work)
 
 ## Problem Statement
@@ -27,22 +25,19 @@ The target audience for this project includes anyone who regularly shops for foo
 ## Features
 
 - **Search Recipes**: Find new and interesting recipes based on the ingredients you already have.
-- **Inventory Tracking**: Keep a tab on the food items you have in stock.
-- **Expiry Alerts**: Get notified about items that are close to expiry.
-  
-> Note: A dashboard feature to provide a snapshot of fridge contents and expiring items is in the works.
+- **Inventory Tracking**: Keep a tab on the food items you have in stock. 
+> Note: Current functionality is limited to adding and deleting of food items. Editing is WIP.
 
 ## Technologies
 
 Built with:
-- HTML
-- CSS
-- JavaScript
-- React
-- Airtable
-- Spoonacular API
-- Trello
-- Insomnia REST
+* HTML
+* CSS
+* JavaScript
+* React
+* Airtable
+* Spoonacular API
+* Insomnia REST
 
 Deployed on:
 - Vercel, link <a href="https://frigid-forager.vercel.app/">here</a>.
@@ -53,17 +48,20 @@ Screenshots and wireframes to be added soon.
 
 ## Getting Started
 
-As of now, the project is hosted on Vercel and there is no setup guide for local development.
-
+* Trello
+* Canva
+  
 ## Known Issues
 
 The project is in its early stages, and there are several bugs and issues related to UI/UX that are currently being resolved.
 
 ## Future Work
 
-- Introduce a dynamic dashboard that provides an overview of the items in the fridge.
 - Implement user authentication for personalized experiences.
+- send notifications about items that are close to expiry.
 - Optimize the algorithm for recipe suggestions.
 - Allow saving of recipes for later reference, add "likes" to individual recipes.
 - Search recipes based on ratings, popularity, new etc.
+
+> Note: A dynamic dashboard feature to provide a snapshot of fridge contents and expiring items is in the works.
 
