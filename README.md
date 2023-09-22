@@ -54,6 +54,8 @@ Screenshots and wireframes to be added soon.
 
 ![wireframe-for-fridgeforager-recipe](https://github.com/darylcty/FrigidForager/assets/124702698/14cae9b0-be42-4a5c-80ff-aa14be722521)
 
+![wireframe-for-fridgeforager-fridge](https://github.com/darylcty/FrigidForager/assets/124702698/5d0b0d41-ea68-412e-8d28-df4fd5f5dd88)
+
 ## Known Issues
 
 The project is in its early stages, and there are several bugs and issues related to UI/UX that are currently being resolved.
