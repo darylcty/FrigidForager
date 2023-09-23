@@ -3,25 +3,26 @@ import "./StockUpForm.css";
 
 //? Init Component
 export default function StockUpForm() {
-    const [category, setCategory] = useState("");
-    const [product, setProduct] = useState("");
-    const [quantity, setQuantity] = useState("0");
-    const [uom, setUom] = useState("");
-    const [purchaseDate, setPurchaseDate] = useState("");
-    const [expiryDate, setExpiryDate] = useState("");
-
+    const [stockForm, setStockForm] = useState({
+        category: "",
+        product: "",
+        quantity: "0",
+        uom: "",
+        purchaseDate: "",
+        expiryDate: ""
+    })
 //? To handle submission of form
 const handleAdd = async (event) => {
     event.preventDefault();
     const url = "https://api.airtable.com/v0/app02KAwukMua69NJ/Table%201";
     const data = {
         "fields": {
-            "Category": category,
-            "Product": product,
-            "Quantity": quantity,
-            "UOM": uom,
-            "PurchaseDate": purchaseDate,
-            "ExpiryDate": expiryDate
+            "Category": stockForm.category,
+            "Product": stockForm.product,
+            "Quantity": stockForm.quantity,
+            "UOM": stockForm.uom,
+            "PurchaseDate": stockForm.purchaseDate,
+            "ExpiryDate": stockForm.expiryDate
         }
     };
 
@@ -37,12 +38,14 @@ const handleAdd = async (event) => {
     const response = await fetch(url, create);
     if (response.ok) {
         console.log("Item added successfully");
-        setCategory("");
-        setProduct("");
-        setQuantity("0");
-        setUom("");
-        setPurchaseDate("");
-        setExpiryDate("");
+        setStockForm({
+            category: "",
+            product: "",
+            quantity: "0",
+            uom: "",
+            purchaseDate: "",
+            expiryDate: ""
+        });
     } else {
         console.log("Failed to add item", await response.json());
     }
@@ -62,8 +65,8 @@ const handleAdd = async (event) => {
                     Category
                     <br/>
                     <select
-                    value={category} 
-                    onChange={(event) => setCategory(event.target.value)}>
+                    value={stockForm.category} 
+                    onChange={(event) => setStockForm({...stockForm, category: event.target.value})}>
                         <option value="" disabled>Select Category</option>
                         <option value="Vegetable">Vegetables</option>
                         <option value="Fruit">Fruits</option>
@@ -81,19 +84,19 @@ const handleAdd = async (event) => {
                     Product
                     <br/>
                 <input type="text" className="input-field" 
-                    value={product} 
-                    onChange={(event) => setProduct(event.target.value)} />
+                    value={stockForm.product} 
+                    onChange={(event) => setStockForm({...stockForm, product: event.target.value})} />
                 </label>
                 <br/>
                 <label className="quantity">
                     Quantity
                     <br/>
                 <input type="number" className="input-field" 
-                    value={quantity} 
-                    onChange={(event) => setQuantity(event.target.value)} />
+                    value={stockForm.quantity} 
+                    onChange={(event) => setStockForm({...stockForm, quantity: event.target.value})} />
                     <select
-                    value={uom} 
-                    onChange={(event) => setUom(event.target.value)}>
+                    value={stockForm.uom} 
+                    onChange={(event) => setStockForm({...stockForm, uom: event.target.value})}>
                         <option value="" disabled>Unit of measurement</option>
                             <optgroup label="Weight">
                                 <option value="grams">g</option>
@@ -122,8 +125,8 @@ const handleAdd = async (event) => {
                     Purchase Date
                     <br/>
                 <input type="date" 
-                    value={purchaseDate} 
-                    onChange={(event) => setPurchaseDate(event.target.value)} />
+                    value={stockForm.purchaseDate} 
+                    onChange={(event) => setStockForm({...stockForm, purchaseDate: event.target.value})} />
                 </label>
                 <br/>
                 <label>
@@ -131,8 +134,8 @@ const handleAdd = async (event) => {
                     <br/>
                 <input type="date"
                     className="expiry-calendar" 
-                    value={expiryDate} 
-                    onChange={(event) => setExpiryDate(event.target.value)} />
+                    value={stockForm.expiryDate} 
+                    onChange={(event) => setStockForm({...stockForm, expiryDate: event.target.value})} />
                 </label>
                 <br/>
                 <button className="fridge-it-button" type="submit">Fridge It!</button>
