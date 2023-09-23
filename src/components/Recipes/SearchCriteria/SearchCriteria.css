@@ -16,9 +16,11 @@
     max-width: 500px;
 }
 
-.ingredient-input {
-    margin-bottom: 1rem;
+.input-field {
+background-color: rgb(228, 221, 221);
+font-size: 20px;
 }
+
 
 .forage-button {
     font-size: 20px;

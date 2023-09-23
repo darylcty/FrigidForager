@@ -37,7 +37,7 @@ export default function Inventory() {
           Authorization: `Bearer ${TOKEN}`,
         },
       });
-      fetchFridge();
+      // fetchFridge();
     }
         return (
             <div className="fridge-contents-table">

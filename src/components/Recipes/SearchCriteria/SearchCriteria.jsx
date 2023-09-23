@@ -7,11 +7,7 @@ import SearchResultsCard from "../SearchResults/SearchResultsCard";
 export default function SearchCriteria() {
 
 //? Init Component
-    const [firstIngredient, setFirstIngredient] = useState("");
-    const [secondIngredient, setSecondIngredient] = useState("");
-    const [thirdIngredient, setThirdIngredient] = useState("");
-    const [fourthIngredient, setFourthIngredient] = useState("");
-    const [fifthIngredient, setFifthIngredient] = useState("");
+    const [searchIngredients, setSearchIngredients] = useState("");
     
 //? Init setRecipe state
     const [results, setResults] = useState([]);
@@ -20,8 +16,11 @@ export default function SearchCriteria() {
 
     const handleSearch = async (event) => {
         event.preventDefault();
+
+        const ingredientsArray = searchIngredients.split(",").map(ingredient => ingredient.trim());
+        const ingredientsString = ingredientsArray.join(",+");
         const url = 
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${firstIngredient},+${secondIngredient},+${thirdIngredient},+${fourthIngredient},+${fifthIngredient}&number=9`;
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsString}&number=9`;
        
         const response = await fetch(url, {
           method: "GET",
@@ -39,51 +38,15 @@ export default function SearchCriteria() {
       //? Create form to collect user's ingredient on hand
     return (
         <div className="search-container">
-            <p>Enter at least 1 ingredient and up to 5 ingredients!</p>
             <form className="search-form" onSubmit={handleSearch}>
                 <label className="search-ingredient">
-                    First Ingredient
+                    Search multiple ingredients separating with a comma.
                     <br/>
                 <input type="text" 
                     className="input-field"
-                    value={firstIngredient} 
-                    onChange={(event) => setFirstIngredient(event.target.value)} />
-                </label>
-                <br/>
-                <label className="search-ingredient">
-                    Second Ingredient
-                    <br/>
-                <input type="text" 
-                    className="input-field"
-                    value={secondIngredient} 
-                    onChange={(event) => setSecondIngredient(event.target.value)} />
-                </label>
-                <br/>
-                <label className="search-ingredient">
-                    Third Ingredient
-                    <br/>
-                <input type="text"
-                    className="input-field"
-                    value={thirdIngredient} 
-                    onChange={(event) => setThirdIngredient(event.target.value)} />
-                </label>
-                <br/>
-                <label className="search-ingredient">
-                    Fourth Ingredient
-                    <br/>
-                <input type="text" 
-                    className="input-field"
-                    value={fourthIngredient} 
-                    onChange={(event) => setFourthIngredient(event.target.value)} />
-                </label>
-                <br/>
-                <label className="search-ingredient">
-                    Fifth Ingredient
-                    <br/>
-                <input type="text" 
-                    className="input-field"
-                    value={fifthIngredient} 
-                    onChange={(event) => setFifthIngredient(event.target.value)} />
+                    value={searchIngredients}
+                    placeholder="tomato, potato, carrots" 
+                    onChange={(event) => setSearchIngredients(event.target.value)} />
                 </label>
                 <br/>
                 {/* <Link to={`/search-results/`}> */}
