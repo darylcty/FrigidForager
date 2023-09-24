@@ -7,8 +7,9 @@
     font-size: 25px;
     width: 100%;
     justify-content: space-evenly;
-    margin: auto;
-    padding: auto;}
+    margin-top: auto;
+    padding: auto;
+}
 
 .search-form {
     text-align: center;
@@ -17,7 +18,6 @@
 }
 
 .input-field {
-background-color: rgb(228, 221, 221);
 font-size: 20px;
 }
 

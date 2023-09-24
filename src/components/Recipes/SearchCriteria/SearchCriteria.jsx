@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SearchCriteria.css";
-import SearchResultsCard from "../SearchResults/SearchResultsCard";
-
 
 export default function SearchCriteria() {
 
@@ -13,6 +11,7 @@ export default function SearchCriteria() {
     const [results, setResults] = useState([]);
 
 //? To handle searching of ingredients provided
+    const navigate = useNavigate();
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -32,8 +31,8 @@ export default function SearchCriteria() {
           const data = await response.json();
           console.log("Fetched data:", data);
           setResults(data);
-
-          }
+          navigate("/search-results", { state: { results: data } });
+    };
 
       //? Create form to collect user's ingredient on hand
     return (
@@ -45,15 +44,12 @@ export default function SearchCriteria() {
                 <input type="text" 
                     className="input-field"
                     value={searchIngredients}
-                    placeholder="tomato, potato, carrots" 
+                    placeholder="e.g., tomato, potato, carrots" 
                     onChange={(event) => setSearchIngredients(event.target.value)} />
                 </label>
                 <br/>
-                {/* <Link to={`/search-results/`}> */}
                     <button className="forage-button" type="submit">Forage!</button>
-                {/* </Link> */}
             </form>
-            <SearchResultsCard results={results} />
         </div>
     );
 }
