@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./SearchResultsCard.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function SearchResultsCard ({ results }) {
-   
+
+export default function SearchResultsCard () {
+   const location = useLocation();
+   const results = location.state.results
     const [selectedRecipe, setSelectedRecipe] = useState({});
     const [id, setID] = useState("");
     const navigate = useNavigate();

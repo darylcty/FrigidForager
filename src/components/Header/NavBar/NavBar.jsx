@@ -7,7 +7,7 @@ export default function NavBar() {
     <div className="navbar">
       <ul className="navbar-items">
         <Link to={`./`}><img src={frigidForagerLogo} alt="Frigid Forager Logo" className="FFLogo" /></Link>
-        <li className="navbar-links"><Link to={`/search-recipes`}>Recipes</Link></li>
+        <li className="navbar-links"><Link to={`/search-recipes`}>Search Recipes</Link></li>
         <li className="navbar-links"><Link to={`/stock-up-form`}>Stock Up</Link></li>
         <li className="navbar-links"><Link to={`/inventory`}>Inventory</Link></li>
       </ul>

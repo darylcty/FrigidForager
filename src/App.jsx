@@ -7,17 +7,16 @@ import SearchResultsCard from './components/Recipes/SearchResults/SearchResultsC
 import RecipeCard from './components/Recipes/RecipeCard/RecipeCard';
 import Inventory from './components/Fridge/Inventory/Inventory';
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
 
 export default function App() {
-
-  return (
+    return (
     <>
       <NavBar />
       <hr className="first-hr"/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search-recipes" element={<SearchCriteria />} />
+        <Route path="/search-results" element={<SearchResultsCard />} />
         <Route path="/stock-up-form" element={<StockUpForm />} />
         <Route path="/recipe-info/:id" element={<RecipeCard />} />
         <Route path="/inventory" element={<Inventory />} />
