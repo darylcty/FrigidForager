@@ -5,7 +5,13 @@ import "./SearchCriteria.css";
 export default function SearchCriteria() {
 
 //? Init Component
-    const [searchIngredients, setSearchIngredients] = useState("");
+    const [searchIngredients, setSearchIngredients] = useState({
+        firstIngredient: "",
+        secondIngredient: "",
+        thirdIngredient: "",
+        fourthIngredient: "",
+        fifthIngredient: "",
+    })
     
 //? Init setRecipe state
     const [results, setResults] = useState([]);
@@ -16,10 +22,8 @@ export default function SearchCriteria() {
     const handleSearch = async (event) => {
         event.preventDefault();
 
-        const ingredientsArray = searchIngredients.split(",").map(ingredient => ingredient.trim());
-        const ingredientsString = ingredientsArray.join(",+");
         const url = 
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsString}&number=9`;
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${searchIngredients.firstIngredient},+${searchIngredients.secondIngredient},+${searchIngredients.thirdIngredient},+${searchIngredients.fourthIngredient},+${searchIngredients.fifthIngredient}&number=9`;
        
         const response = await fetch(url, {
           method: "GET",
@@ -39,16 +43,51 @@ export default function SearchCriteria() {
         <div className="search-container">
             <form className="search-form" onSubmit={handleSearch}>
                 <label className="search-ingredient">
-                    Search multiple ingredients separating with a comma.
+                    Enter first ingredient
                     <br/>
                 <input type="text" 
                     className="input-field"
-                    value={searchIngredients}
-                    placeholder="e.g., tomato, potato, carrots" 
-                    onChange={(event) => setSearchIngredients(event.target.value)} />
+                    value={searchIngredients.firstIngredient}
+                    onChange={(event) => setSearchIngredients({...searchIngredients, firstIngredient: event.target.value})}/>
                 </label>
                 <br/>
-                    <button className="forage-button" type="submit">Forage!</button>
+                <label className="search-ingredient">
+                    Enter second ingredient
+                    <br/>
+                <input type="text" 
+                    className="input-field"
+                    value={searchIngredients.secondIngredient}
+                    onChange={(event) => setSearchIngredients({...searchIngredients, secondIngredient: event.target.value})}/>
+                </label>
+                <br/>
+                <label className="search-ingredient">
+                    Enter third ingredient
+                    <br/>
+                <input type="text" 
+                    className="input-field"
+                    value={searchIngredients.thirdIngredient}
+                    onChange={(event) => setSearchIngredients({...searchIngredients, thirdIngredient: event.target.value})}/>
+                </label>
+                <br/>
+                <label className="search-ingredient">
+                    Enter fourth ingredient
+                    <br/>
+                <input type="text" 
+                    className="input-field"
+                    value={searchIngredients.fourthIngredient}
+                    onChange={(event) => setSearchIngredients({...searchIngredients, fourthIngredient: event.target.value})}/>
+                </label>
+                <br/>
+                <label className="search-ingredient">
+                    Enter fifth ingredient
+                    <br/>
+                <input type="text" 
+                    className="input-field"
+                    value={searchIngredients.fifthIngredient}
+                    onChange={(event) => setSearchIngredients({...searchIngredients, fifthIngredient: event.target.value})}/>
+                </label>
+                <br/>
+                <button className="forage-button" type="submit">Forage!</button>
             </form>
         </div>
     );
