@@ -37,7 +37,10 @@ export default function Inventory() {
           Authorization: `Bearer ${TOKEN}`,
         },
       });
-      // fetchFridge();
+
+      const updatedFridge = fridge.filter(item => item.id !== id);
+      setFridge(updatedFridge);
+
     }
         return (
             <div className="fridge-contents-table">
